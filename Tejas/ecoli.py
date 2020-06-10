@@ -1,4 +1,4 @@
-x = open("/share/Ecoli/GCA_000005845.2_ASM584v2_genomic.fna", "r")
+x = open("GCA_000005845.2_ASM584v2_genomic.fna", "r")
 count = 0
 y = x.read()
 
