@@ -5,7 +5,7 @@ Created on Jun 11, 2020
 '''
 
 x = open("GCA_000005845.2_ASM584v2_genomic.fna", "r")
-count = 0
+skip = x.readline()
 y = x.read()
 
 
@@ -15,7 +15,7 @@ proteins = {"Alanine" : 0, "Arginine" : 0, "Asparagine" : 0, "Aspartic Acid" : 0
             "Methionine" : 0, "Proline" : 0, "Serine" : 0, "Threonine" : 0, 
             "Tryptophan": 0, "Tyrosine" : 0, "Valine" : 0 }
 
-for i in range(69, len(y), 3):
+for i in range(0, len(y), 3):
         if(y[i:i+3] ==  "GCG" or "GCA" or "GCC" or "GCT"):
             proteins["Alanine"] += 1
         if(y[i:i+3] == "CGC" or "CGT" or "CGG" or "CGA" or "AGA" or "AGG"):
