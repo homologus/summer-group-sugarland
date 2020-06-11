@@ -4,7 +4,7 @@ Created on Jun 11, 2020
 @author: TrexK
 '''
 
-x = open("GCA_000005845.2_ASM584v2_genomic.fna", "r")
+x = open("/share/Ecoli/GCA_000005845.2_ASM584v2_genomic.fna", "r")
 skip = x.readline()
 y = x.read()
 
