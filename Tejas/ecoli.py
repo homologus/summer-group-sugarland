@@ -4,7 +4,6 @@ Created on Jun 11, 2020
 @author: TrexK
 '''
 f = open("/share/Ecoli/GCA_000005845.2_ASM584v2_genomic.fna", "r")
-skip = f.readline()
 mylist = f.read().splitlines()
 
 a = "".join(mylist)
@@ -31,7 +30,7 @@ proteins = {
 seq = ""
 
 
-for i in range(0, len(a), 3):
+for i in range(69, len(a), 3):
     z = a[i:i+3]
     seq += proteins[z]
     
