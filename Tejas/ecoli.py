@@ -3,58 +3,36 @@ Created on Jun 11, 2020
 
 @author: TrexK
 '''
+f = open("/share/Ecoli/GCA_000005845.2_ASM584v2_genomic.fna", "r")
+skip = f.readline()
+mylist = f.read().splitlines()
 
-x = open("/share/Ecoli/GCA_000005845.2_ASM584v2_genomic.fna", "r")
-skip = x.readline()
-y = x.read()
+a = "".join(mylist)
 
 
-proteins = {"Alanine" : 0, "Arginine" : 0, "Asparagine" : 0, "Aspartic Acid" : 0, 
-            "Cysteine" : 0, "Glutamic Acid" : 0, "Glutamine" : 0, "Glycine" : 0, 
-            "Histidine" : 0, "Isoleucine" : 0, "Leucine" : 0, "Lysine" : 0, 
-            "Methionine" : 0, "Proline" : 0, "Serine" : 0, "Threonine" : 0, 
-            "Tryptophan": 0, "Tyrosine" : 0, "Valine" : 0 }
+proteins = { 
+        'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M', 
+        'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T', 
+        'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K', 
+        'AGC':'S', 'AGT':'S', 'AGA':'R', 'AGG':'R',                  
+        'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L', 
+        'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P', 
+        'CAC':'H', 'CAT':'H', 'CAA':'Q', 'CAG':'Q', 
+        'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGT':'R', 
+        'GTA':'V', 'GTC':'V', 'GTG':'V', 'GTT':'V', 
+        'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A', 
+        'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E', 
+        'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGT':'G', 
+        'TCA':'S', 'TCC':'S', 'TCG':'S', 'TCT':'S', 
+        'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L', 
+        'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_', 
+        'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W', 
+    }
+seq = ""
 
-for i in range(0, len(y), 3):
-        if(y[i:i+3] ==  "GCG" or "GCA" or "GCC" or "GCT"):
-            proteins["Alanine"] += 1
-        if(y[i:i+3] == "CGC" or "CGT" or "CGG" or "CGA" or "AGA" or "AGG"):
-            proteins["Arginine"] += 1
-        if(y[i:i+3] == "AAC" or "AAT"):
-            proteins["Asparagine"] += 1
-        if(y[i:i+3] == "GAT" or "GAC"):
-            proteins["Aspartic Acid"] += 1
-        if(y[i:i+3] == "TGC" or "TGT"):
-            proteins["Cysteine"] += 1
-        if(y[i:i+3] == "GAA" or "GAG"):
-            proteins["Glutamic Acid"] += 1
-        if(y[i:i+3] == "CAA" or "CAG"):
-            proteins["Glutamine"] += 1
-        if(y[i:i+3] == "GGG" or "GGA" or "GGT" or "GGC"):
-            proteins["Glycine"] += 1
-        if(y[i:i+3] == "CAC" or "CAT"):
-            proteins["Histidine"] += 1
-        if(y[i:i+3] == "ATT" or "ATC" or "ATA"):
-            proteins["Isoleucine"] += 1
-        if(y[i:i+3] == "ATG" or "ATA" or "CTT" or "CTA" or "CTG" or "CTC"):
-            proteins["Leucine"] += 1
-        if(y[i:i+3] == "AAA" or "AAG"):
-            proteins["Lysine"] += 1
-        if(y[i:i+3] == "ATG"):
-            proteins["Methionine"] += 1
-        if(y[i:i+3] == "CCA" or "CCG" or "CCT" or "CCC"):
-            proteins["Proline"] += 1
-        if(y[i:i+3] == "AGT" or "AGC" or "TCG" or "TCT" or "TCC" or "TCA"):
-            proteins["Serine"] += 1
-        if(y[i:i+3] == "ACT" or "ACC" or "ACA" or "ACG"):
-            proteins["Threonine"] += 1
-        if(y[i:i+3] == "TGG"):
-            proteins["Tryptophan"] += 1
-        if(y[i:i+3] == "TAC" or "TAT"):
-            proteins["Tyrosine"] += 1
-        if(y[i:i+3] == "GTG" or "GTA" or "GTC" or "GTT"):
-            proteins["Valine"] += 1
-          
 
-for key, value in proteins.items():
-    print("%s : %s\n" %(key, value))
+for i in range(0, len(a), 3):
+    z = a[i:i+3]
+    seq += proteins[z]
+    
+print(seq)
