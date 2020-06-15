@@ -3,10 +3,10 @@ Created on Jun 11, 2020
 
 @author: TrexK
 '''
-f = open("/share/Ecoli/GCA_000005845.2_ASM584v2_genomic.fna", "r")
-mylist = f.read().splitlines()
 
-a = "".join(mylist)
+f = open("/share/Ecoli/GCA_000005845.2_ASM584v2_genomic.fna", "r")
+skip = f.readline()
+a = "".join(f.read().splitlines())
 
 
 proteins = { 
@@ -29,9 +29,10 @@ proteins = {
     }
 seq = ""
 
-
-for i in range(69, len(a), 3):
-    z = a[i:i+3]
-    seq += proteins[z]
+	
+for i in range(0, len(a), 3):
+	if((len(a)-i) > 2):
+    		z = a[i:i+3]
+    		seq += proteins[z]
     
 print(seq)
