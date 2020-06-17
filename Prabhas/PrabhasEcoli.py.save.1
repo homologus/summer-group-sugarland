@@ -1,0 +1,37 @@
+
+
+
+x = open("GCA_000005845.2_ASM584v2_genomic.fna", "r")
+x.readline()
+y= x.read()
+
+y= y[189:255]
+print(y)
+
+proteins = {"Alanine" : 0, "Arginine" : 0, "Asparagine" : 0, "Aspartic Acid" : 0,
+            "Cysteine" : 0, "Glutamic Acid" : 0, "Glutamine" : 0, "Glycine" : 0,
+            "Histidine" : 0, "Isoleucine" : 0, "Leucine" : 0, "Lysine" : 0,
+            "Methionine" : 0, "Proline" : 0, "Serine" : 0, "Threonine" : 0,
+            "Tryptophan": 0, "Tyrosine" : 0, "Valine" : 0 }
+
+for i in range(0, len(y), 3):
+        if(y[i:i+3] == "GCG" or y[i:i+3] == "GCA" or y[i:i+3] == "GCC" or y[i:i+3] == "GCT"):
+            proteins["Alanine"] += 1
+        elif(y[i:i+3] == "CGC" or y[i:i+3] == "CGT" or y[i:i+3] == "CGG" or y[i:i+3] == "CGA" or y[i:i+3] == "AGA" or y[i:i+3] == "AGG"):
+            proteins["Arginine"] += 1
+        elif(y[i:i+3] == "AAC" or y[i:i+3] == "AAT"):
+            proteins["Asparagine"] += 1
+        elif(y[i:i+3] == "GAT" or y[i:i+3] == "GAC"):
+            proteins["Aspartic Acid"] += 1
+        elif(y[i:i+3] == "TGC" or y[i:i+3] == "TGT"):
+            proteins["Cysteine"] += 1
+        elif(y[i:i+3] == "GAA" or y[i:i+3] == "GAG"):
+            proteins["Glutamic Acid"] += 1
+        elif(y[i:i+3] == "CAA" or y[i:i+3] == "CAG"):
+            proteins["Glutamine"] += 1
+        elif(y[i:i+3] == "GGG" or y[i:i+3] == "GGA" or y[i:i+3] == "GGT" or y[i:i+3] == "GGC"):
+            proteins["Glycine"] += 1
+        elif(y[i:i+3] == "CAC" or y[i:i+3] == "CAT"):
+            proteins["Histidine"] += 1
+
+print(proteins)
