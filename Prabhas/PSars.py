@@ -5,7 +5,7 @@ NSeq=x[0].seq
 
 #first frame
 PSeq= NSeq[0:len(NSeq)//3*3].translate()
-PSeq.split("*")
+PSeq= PSeq.split("*")
 for ele in PSeq:
         if(len(ele)>=100):
                 print("frame " + str(i)),
@@ -15,7 +15,7 @@ for ele in PSeq:
 #second frame
 sNSeq=NSeq[1:(len(NSeq)//3*3)-2]
 PSeq= sNSeq.translate()
-PSeq.split("*")
+PSeq= PSeq.split("*")
 for ele in PSeq:
         if(len(ele)>=100):
                 print("frame 2:"),
@@ -25,7 +25,7 @@ for ele in PSeq:
 #third frame
 tNSeq=NSeq[2:(len(NSeq)//3*3)-1]
 PSeq= tNSeq.translate()
-PSeq.split("*")
+PSeq= PSeq.split("*")
 for ele in PSeq:
         if(len(ele)>=100):
                 print("frame 3:"),
