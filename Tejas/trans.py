@@ -1,4 +1,3 @@
-from Bio.Seq import Seq
 
 f = open("/share/SARS/seq.fasta", "r")
 skip = f.readline()
