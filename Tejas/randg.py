@@ -49,4 +49,4 @@ for i in range(0, len(split)):
     largest = split[i]
 
 
-print(len(largest))
+print(largest, len(largest))
