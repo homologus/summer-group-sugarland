@@ -9,15 +9,11 @@ x = list(SeqIO.parse("/share/SARS/seq.fasta","fasta"))
 NSeq=x[0].seq
 
 for i in range(3):
-        PSeq= NSeq[i:(len(NSeq)//3*3)-(3-i)].translate()
-        PSeq= PSeq.split("*")
-        for ele in PSeq:
-                if(len(ele)>=100):
-                        print("frame " + str(i) + ":"),
-                        print(ele),
-                        print(" "),
-
-
-
-
+	PSeq= NSeq[i:(len(NSeq)//3*3)-(3-i)].translate()
+	PSeq= PSeq.split("*")
+	for ele in PSeq:
+	        if(len(ele)>=100):
+	                print("frame " + str(i) + ":"),
+	                print(ele),
+	                print(" "),
 
