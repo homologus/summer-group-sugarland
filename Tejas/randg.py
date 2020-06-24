@@ -1,52 +1,57 @@
 from Bio.Seq import Seq
 import random
+from array import *
 
-print("What is the GC percentage? (0-100)")
-inp = int(input())
-length = 10000
+def randomprotein(percentage):
+	inp = percentage
+	length = 10000
 
-gcpercent = float(inp)/100
-atpercent = 1-gcpercent
-gcthou = int(length*gcpercent) 
-atthou = int(length*atpercent)
-
-numa = random.randint(0, atthou)
-numt = int(atthou)-int(numa)
-numc = random.randint(0, gcthou)
-numg = int(gcthou)-int(numc)
-
-seq = ""
-
-goodlen = True
-while goodlen:
-
-  rand = random.randint(0,3)
-
-  if(rand == 0 and numa != 0):
-    seq += "A"
-    numa -= 1
-  elif(rand == 1 and numc != 0):
-    seq += "C"
-    numc -= 1
-  elif(rand == 2 and numg != 0):
-    seq += "G"
-    numg -= 1
-  elif(rand == 3 and numt != 0):
-    seq += "T"
-    numt -= 1
-
-  if((numa + numt + numg + numc) == 0):
-    goodlen = False
-
-seq = Seq(seq)
-seq = seq.translate()
-
-split = seq.split("*")
-
-for i in range(0, len(split)):
-  largest = ""
-  if(len(split[i]) > len(largest)):
-    largest = split[i]
+	gcpercent = float(inp)/100
+	atpercent = 1-gcpercent
+	gcthou = int(length*gcpercent) 
+	atthou = int(length*atpercent)
 
 
-print(largest, len(largest))
+	seq = ""
+
+	goodlen = True
+	while goodlen:
+
+  		rand = random.uniform(0,1)
+
+  		if(rand >= 0 and rand < gcpercent/2):
+     	 		seq += "G"
+  		elif(rand >= gcpercent/2 and rand < gcpercent):
+      			seq += "C"
+  		elif(rand >= gcpercent and rand < 1-(atpercent/2)):
+      			seq += "A"
+  		elif(rand  >= 1-(atpercent/2) and rand <= 1):
+      			seq += "T"
+
+	  	if(len(seq)==10000):
+    			goodlen = False
+
+	seq = Seq(seq)
+	seq = seq.translate()
+	split = seq.split("*")
+
+	for i in range(0, len(split)):
+  		largest = ""
+  		if(len(split[i]) > len(largest)):
+    			largest = split[i]
+
+
+	return(len(largest))
+
+def average(a):
+	total = 0
+	for i in [a]:
+		for j in range(0, 100):
+			total += randomprotein(i)
+
+
+	return(total/100)
+
+arr = []
+for c in range(20, 65, 5):
+	print("Average Longest Length of Size ", c, ": ", average(c))
