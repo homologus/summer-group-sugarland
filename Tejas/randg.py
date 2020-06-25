@@ -52,6 +52,5 @@ def average(a):
 
 	return(total/100)
 
-arr = []
 for c in range(20, 65, 5):
-	print("Average Longest Length of GC Percent ", c, ": ", average(c))
+	print("Average Longest Length of GC Percent", c, ":", average(c))
